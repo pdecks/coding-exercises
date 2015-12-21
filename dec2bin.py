@@ -15,7 +15,7 @@ def dec2bin(dec_num):
     n = 0
     while 2**(n+1) <= dec_num:
         n += 1
-    
+
     # generate the string
     dec_str = ''
     next_num = dec_num
