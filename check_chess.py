@@ -56,10 +56,10 @@ def check(k_coor, q_coor):
     diag_coord(q_coord, q_moves, 1, 1)
     diag_coord(q_coord, q_moves, -1, -1)
 
-    print "-"*40
-    print "QUEEN MOVES"
-    for pair in q_moves:
-        print pair
+    # print "-"*40
+    # print "QUEEN MOVES"
+    # for pair in q_moves:
+    #     print pair
 
     print '-'*40
     print "PRINTING BOARD"
@@ -115,7 +115,6 @@ def diag_coord(start, lst, dir1, dir2):
     dir1: +/- 1 (x direction)
     dir2: +/- 1 (y direction)
     """
-    # import pdb; pdb.set_trace()
     x = start[0] + dir1
     y = start[1] + dir2
 
@@ -141,11 +140,13 @@ def print_board(k_coor, q_coor, q_moves):
             else:
                 curr_row += '-'
         board.append(curr_row)
-    # import pdb; pdb.set_trace()
     for row in board:
         print row
 
 if __name__ == '__main__':
-    king = 'D6'
-    queen = 'H6'
-    check(king, queen)
+    positions = [('E6', 'E4'), ('B7', 'D5'), ('A1', 'H8'), ('D6', 'H7'), ('E6', 'F4')]
+    for king, queen in positions:
+        print '-'*40
+        print "King:", king
+        print "Queen:", queen
+        check(king, queen)
