@@ -9,6 +9,9 @@ def largest_sum(nums):
 
     >>> largest_sum([1, 0, 3, -8, 19, -20, 4, -2, 3, -2])
     [19]
+
+    >>> largest_sum([1, 0, 3, -8, 0, -2, 20, 1, 1, -22, 0, -2, 22])
+    [22]
     """
     # variables for keeping track of max sum
     max_seq = []
@@ -29,9 +32,10 @@ def largest_sum(nums):
             j = i
         # last value in index
         elif i == max_index:
-            if nums[i] > max_sum:
+            if nums[i] > max_sum or (nums[i] == max_sum and max_length > 1):
                 max_sum = nums[i]
                 max_seq = nums[i:]
+                break
         else: # examine number and sequential values
             curr_sum = nums[i]
             curr_length = 1
@@ -67,6 +71,8 @@ def largest_sum(nums):
                     j += 1
 
     return max_seq
+
+largest_sum([1, 0, 3, -8, 0, -2, 20, 1, 1, -22, 0, -2, 22])
 
 # largest_sum([1, 0, 3, -8, 4, -2, 3, -2])
 
