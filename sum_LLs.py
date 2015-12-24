@@ -33,11 +33,13 @@ def sum_LLs(LL1, LL2):
     >>> LL2.append_node(5)
     >>> LL2.append_node(9)
     >>> LL2.append_node(2)
-    >>> sum_LLs(LL1, LL2)
+    >>> sum_num, sum_LL = sum_LLs(LL1, LL2)
+    >>> print sum_num
     912
 
     """
     sum_num = 0
+    sum_LL = Linked_List()
     curr_place = 0
     curr_digit = None
     carry_over = False
@@ -61,12 +63,14 @@ def sum_LLs(LL1, LL2):
             curr_n1 = curr_n1.next
             curr_n2 = curr_n2.next
         curr_digit, carry_over = add_digits(dig1, dig2, carry_over)
+        sum_LL.append_node(curr_digit)
         sum_num += curr_digit * (10 ** curr_place)
         curr_place += 1
     if carry_over:
         sum_num += 1 * (10 ** curr_place)
+        sum_LL.append_node(1)
     # curr_digit, carry_over = add_digits(curr_n1.data, curr_n2.data, carry_over)
-    return sum_num
+    return sum_num, sum_LL
 
 
 def add_digits(d1, d2, c_over):
@@ -96,6 +100,6 @@ if __name__ == "__main__":
     LL2.append_node(2)
 
 
-summed_num = sum_LLs(LL1, LL2)
+summed_num, sum_LL = sum_LLs(LL1, LL2)
 print "This is the sum:", summed_num
 
