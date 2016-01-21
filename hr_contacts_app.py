@@ -79,10 +79,22 @@ class Trie(object):
     def find(self, prefix):
         print self.root.__find__(prefix)
 
+# input parsing
+num_commands = int(raw_input())
+for val in range(num_commands):
+    command = raw_input().strip().split()
+    if val == 0 and command[0] == 'add':
+        # create Trie
+        trie = Trie()
+        trie.insert(command[1])
+    elif command[0] == 'add':
+        trie.insert(command[1])
+    else:
+        trie.find(command[1])
 
-trie = Trie()
-trie.insert('apple')
-# trie.insert('ape')
-trie.insert('apply')
-trie.find('app')
+# trie = Trie()
+# trie.insert('apple')
+# # trie.insert('ape')
+# trie.insert('apply')
+# trie.find('app')
 
