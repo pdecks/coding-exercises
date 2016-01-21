@@ -52,6 +52,21 @@ class Trie_Node(object):
         # append '*' to signify leaf node at end of string
         curr_node.children['*'] = Trie_Node('*')
 
+    def __find__(self, prefix):
+        "walk through prefix and return self.count for last character in prefix"
+        curr_node = self
+        i = 0
+        while i < len(prefix):
+            c = prefix[i]
+            if not curr_node.children:
+                return 0
+            elif curr_node.children.get(c, 0) == 0:
+                return 0
+            else:
+                curr_node = curr_node.children[c]
+            i += 1
+        return curr_node.count
+
 
 class Trie(object):
 
@@ -61,9 +76,13 @@ class Trie(object):
     def insert(self, word):
         self.root.__insert__(word)
 
+    def find(self, prefix):
+        print self.root.__find__(prefix)
+
 
 trie = Trie()
 trie.insert('apple')
-trie.insert('ape')
+# trie.insert('ape')
 trie.insert('apply')
+trie.find('app')
 
